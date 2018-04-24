@@ -1,1 +1,1 @@
-from query_utils import API
+from .query_utils import API

@@ -1,7 +1,7 @@
 import requests
 
-from utils import API
-from utils.func_utils import ensure_params_under_instance_context
+from .utils import API
+from .utils.func_utils import ensure_params_under_instance_context
 
 
 class Stock(API):
