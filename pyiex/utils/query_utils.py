@@ -1,9 +1,8 @@
 import re
-from http_request_randomizer.requests.proxy.requestProxy import RequestProxy
-from http_request_randomizer.requests.errors.ProxyListException import ProxyListException
+from muted_http_request_randomizer.requests.proxy.requestProxy import RequestProxy
+from muted_http_request_randomizer.requests.errors.ProxyListException import ProxyListException
 from .func_utils import ensure_params_under_instance_context
 
-req_proxy = RequestProxy()
 
 VARIABLE_CHECK = re.compile('{([A-Z0-9a-z])+}')
 API_URL = 'https://api.iextrading.com'
@@ -25,6 +24,7 @@ class API(object):
         """
         self._base_path = [API_URL] + list(args)
         self._api_name = api_name
+        self.req_proxy = RequestProxy()
 
     def _call(self, path, *args, **kwargs):
         """
@@ -45,10 +45,10 @@ class API(object):
         url = url.format(**params_dict)
         while True:
             try:
-                response = req_proxy.generate_proxied_request(url)
+                response = self.req_proxy.generate_proxied_request(url)
                 break
             except ProxyListException:
-                req_proxy = RequestProxy()
+                self.req_proxy = RequestProxy()
 
         if response.status_code != 200:
             message = [response.text, 'API Call Error for url:', url]
