@@ -12,7 +12,7 @@ with open(path.join(here, "README.rst"), encoding="utf-8") as f:
 setup(
     name="pyiex",
 
-    version='0.0.10',
+    version='0.0.11',
 
     author="Wentao Lu",
     author_email="wentao@wentaolu.com",
@@ -35,7 +35,7 @@ setup(
     packages=find_packages(exclude=["docs", "tests"]),
 
     install_requires=[
-        "muted_http_request_randomizer>=0.0.4",
+        "http_request_randomizer>=1.0.0",
     ],
 
     extras_require={

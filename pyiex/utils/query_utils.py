@@ -1,6 +1,6 @@
 import re
-from muted_http_request_randomizer.requests.proxy.requestProxy import RequestProxy
-from muted_http_request_randomizer.requests.errors.ProxyListException import ProxyListException
+from http_request_randomizer.requests.proxy.requestProxy import RequestProxy
+from http_request_randomizer.requests.errors.ProxyListException import ProxyListException
 from .func_utils import ensure_params_under_instance_context
 
 
